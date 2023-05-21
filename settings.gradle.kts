@@ -1,1 +1,3 @@
-rootProject.name = "bandeiras.bandeiras"
+rootProject.name = "bandeiras"
+
+include("server")

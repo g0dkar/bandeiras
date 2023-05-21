@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+foundFiles=()
+fullFileList=''
+containsJavaOrKotlin=0
+
+# Collect all files currently in staging area, and check if there are any java or kotlin files
+for entry in $(git diff --cached --name-only --diff-filter=ACM); do
+  if [[ $entry == *.kt ]]; then
+    foundFiles+=("$entry")
+    fullFileList="$fullFileList,$entry"
+    containsJavaOrKotlin=1
+  fi
+done
+
+# If any java or kotlin files are found, run spotlessApply
+if [ "$containsJavaOrKotlin" == "1" ]; then
+  ./gradlew spotlessKotlinApply -x spotlessKotlin -PspotlessFiles="${fullFileList:1}"
+
+  for file in "${foundFiles[@]}"; do
+    git add "$file"
+  done
+fi

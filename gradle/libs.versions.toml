@@ -1,0 +1,63 @@
+[versions]
+kotlin = "1.8.21"
+ktor = "2.3.0"
+ktlint = "0.48.2"
+spotless = "6.15.0"
+logback = "1.2.11"
+ktoml = "0.5.0"
+flyway = "9.7.0"
+jooqPlugin = "8.1"
+testcontainers = "1.17.6"
+postgresql = "42.5.1"
+prometheus = "1.6.3"
+jooq = "3.17.7"
+mockito = "5.1.1"
+mockito-kotlin = "4.1.0"
+
+[libraries]
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+jooq = { module = "org.jooq:jooq", version.ref = "jooq" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+micrometer-registry-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version.ref = "prometheus" }
+ktoml = { module = "com.akuleshov7:ktoml-core", version.ref = "ktoml" }
+
+# Ktor
+## Server
+ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
+ktor-server-auth = { module = "io.ktor:ktor-server-auth-jvm", version.ref = "ktor" }
+ktor-server-config-yaml = { module = "io.ktor:ktor-server-config-yaml", version.ref = "ktor" }
+ktor-server-contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor" }
+ktor-server-metrics-core = { module = "io.ktor:ktor-server-metrics-jvm", version.ref = "ktor" }
+ktor-server-metrics-micrometer = { module = "io.ktor:ktor-server-metrics-micrometer-jvm", version.ref = "ktor" }
+ktor-server-hsts = { module = "io.ktor:ktor-server-hsts-jvm", version.ref = "ktor" }
+ktor-server-cors = { module = "io.ktor:ktor-server-cors-jvm", version.ref = "ktor" }
+ktor-server-compression = { module = "io.ktor:ktor-server-compression-jvm", version.ref = "ktor" }
+ktor-server-statusPages = { module = "io.ktor:ktor-server-status-pages-jvm", version.ref = "ktor" }
+ktor-server-sessions = { module = "io.ktor:ktor-server-sessions-jvm", version.ref = "ktor" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
+ktor-server-hostCommon = { module = "io.ktor:ktor-server-host-common-jvm", version.ref = "ktor" }
+ktor-server-defaultHeaders = { module = "io.ktor:ktor-server-default-headers-jvm", version.ref = "ktor" }
+ktor-server-cachingHeaders = { module = "io.ktor:ktor-server-caching-headers-jvm", version.ref = "ktor" }
+
+## Client
+ktor-client-core = { module = "io.ktor:ktor-client-core-jvm", version.ref = "ktor" }
+ktor-client-apache = { module = "io.ktor:ktor-client-apache-jvm", version.ref = "ktor" }
+
+## Extra
+ktor-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
+
+# Test
+ktor-server-tests = { module = "io.ktor:ktor-server-tests-jvm", version.ref = "ktor" }
+kotlin-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+testcontainers-base = { module = "org.testcontainers:junit-jupiter", version.ref = "testcontainers" }
+testcontainers-postgresql = { module = "org.testcontainers:postgresql", version.ref = "testcontainers" }
+mockito-junit = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+
+[plugins]
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+jooq = { id = "nu.studer.jooq", version.ref = "jooqPlugin" }
+flyway = { id = "org.flywaydb.flyway", version.ref = "flyway" }

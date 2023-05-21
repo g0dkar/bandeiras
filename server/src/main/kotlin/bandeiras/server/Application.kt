@@ -11,11 +11,6 @@ import io.ktor.server.netty.EngineMain
 
 fun main(args: Array<String>) = EngineMain.main(args)
 
-//fun main() {
-//    embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
-//        .start(wait = true)
-//}
-
 fun Application.module() {
     val applicationConfig = environment.config
 

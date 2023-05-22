@@ -20,7 +20,6 @@ import io.ktor.server.sessions.cookie
 import io.ktor.server.sessions.get
 import io.ktor.server.sessions.sessions
 import io.ktor.server.sessions.set
-import kotlin.collections.listOf
 import kotlin.collections.set
 
 fun Application.configureSecurity() {
@@ -42,12 +41,14 @@ fun Application.configureSecurity() {
             client = HttpClient(Apache)
         }
     }
+
     data class MySession(val count: Int = 0)
     install(Sessions) {
         cookie<MySession>("MY_SESSION") {
             cookie.extensions["SameSite"] = "lax"
         }
     }
+
     routing {
         authenticate("auth-oauth-google") {
             get("login") {
@@ -60,6 +61,7 @@ fun Application.configureSecurity() {
                 call.respondRedirect("/hello")
             }
         }
+
         get("/session/increment") {
             val session = call.sessions.get<MySession>() ?: MySession()
             call.sessions.set(session.copy(count = session.count + 1))

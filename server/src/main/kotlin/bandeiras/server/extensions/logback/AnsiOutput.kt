@@ -1,5 +1,7 @@
 package bandeiras.server.extensions.logback
 
+import io.ktor.server.config.ApplicationConfig
+
 object AnsiOutput {
     private val OS_NAME = System.getProperty("os.name").lowercase()
     private const val ENCODE_JOIN = ";"
@@ -8,7 +10,11 @@ object AnsiOutput {
     private val RESET = "0;${AnsiCode.DEFAULT}"
 
     private val consoleAvailable: Boolean = System.console() != null
-    private val ansiCapable: Boolean = detectAnsi()
+    private var ansiCapable: Boolean = detectAnsi()
+
+    fun configureAnsi(config: ApplicationConfig) {
+        ansiCapable = config.propertyOrNull("logging.color")?.toString()?.toBoolean() ?: detectAnsi()
+    }
 
     fun encode(element: AnsiCode): String {
         return if (ansiCapable) {

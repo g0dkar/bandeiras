@@ -53,8 +53,8 @@ dependencies {
     implementation(libs.ktor.client.apache)
 
     /* Extra */
-    implementation(libs.ktor.serialization)
-    implementation(libs.ktoml)
+    implementation(libs.ktor.serialization.json)
+    implementation(libs.ktor.serialization.protobuf)
 
     /* Observability */
     implementation(libs.logback)
